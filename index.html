@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atharv Sengar - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: #0a0a0a;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff0080, #7928ca);
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+        }
+        header p {
+            opacity: 0.8;
+        }
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .traits-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .trait-card {
+            flex: 0 0 auto;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            width: 200px;
+            text-align: center;
+            scroll-snap-align: start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .trait-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 128, 0.8), 0 0 25px rgba(121, 40, 202, 0.8);
+        }
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .achievement-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(255, 0, 128, 0.8), 0 0 25px rgba(121, 40, 202, 0.8);
+        }
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 40px 15px;
+            }
+
+            .trait-card {
+                width: 160px;
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+
+            .achievements {
+                grid-template-columns: 1fr;
+            }
+
+            .achievement-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <p style="font-size:1.2rem; opacity:0.8; margin:0;">My Portfolio</p>
+    <h1>Atharv Sengar</h1>
+    <p style="font-size:1rem; opacity:0.7; margin-bottom:1rem;">Class X-B</p>
+    <p>Scroll to find more</p>
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p style="text-align:center; font-size:1.2rem; max-width:700px; margin:auto;">
+        I love exploring and creating new things. I enjoy giving public speeches, sketching, and listening to music. 
+        I manage my time effectively and thrive when leading a team. I’m a quick learner with a strong interest in coding 
+        and discovering new skills.
+    </p>
+</section>
+
+<section id="traits">
+    <h2>My Traits</h2>
+    <div class="traits-container">
+        <div class="trait-card">🎨 <b>Creative</b><br>Love to sketch and bring ideas to life</div>
+        <div class="trait-card">🎤 <b>Public Speaker</b><br>Confident in sharing ideas on stage</div>
+        <div class="trait-card">🎶 <b>Music Lover</b><br>Always vibing to good tunes</div>
+        <div class="trait-card">🕒 <b>Time Manager</b><br>Can plan and organize tasks perfectly</div>
+        <div class="trait-card">🤝 <b>Team Leader</b><br>Thrive in leading a group towards goals</div>
+        <div class="trait-card">🧠 <b>Curious</b><br>Love to discover and learn about different things</div>
+        <div class="trait-card">⚡ <b>Quick Learner</b><br>Adapt and pick up new skills fast</div>
+        <div class="trait-card">💻 <b>Coding Enthusiast</b><br>Passionate about programming and problem-solving</div>
+    </div>
+</section>
+
+<section id="achievements">
+    <h2>My Achievements</h2>
+    <div class="achievements">
+        <div class="achievement-card">♟️ <b>Winner of 2023 Chess Tournament</b></div>
+        <div class="achievement-card">🏅 <b>7× Medalist in Abacus & Vedic Maths</b></div>
+        <div class="achievement-card">📊 <b>Maths Wiz Kid Award Winner</b></div>
+        <div class="achievement-card">🏃 <b>2× Medalist in Athlos Events</b></div>
+        <div class="achievement-card">🏆 <b>30+ Certificates in Competitions</b></div>
+    </div>
+</section>
+
+<script>
+    // Intersection Observer for fade-in
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.trait-card, .achievement-card, .traits-container').forEach((el) => {
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
